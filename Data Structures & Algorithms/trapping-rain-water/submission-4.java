@@ -1,0 +1,25 @@
+class Solution {
+    public int trap(int[] height) {
+
+        int result = 0;
+        int left = 0;
+        int right = height.length-1;
+
+        int leftMax = 0;
+        int rightMax = 0;
+
+        while(left <= right) {
+            if(leftMax <= rightMax) {
+                leftMax = Math.max(leftMax, height[left]);
+                result += leftMax - height[left];
+                left++;
+            }
+            else {
+                rightMax = Math.max(rightMax, height[right]);
+                result += rightMax - height[right];
+                right--;
+            }
+        }
+        return result;
+    }
+}
